@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Localiza a los tuyos ciempre";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+
+            </p>
+        </div>
+    </section>
+}
+<h3>Powerd by google  </h3>
+<div id="map_canvas" style="width: 800px; height: 800px">
+</div>
+@section scripts
+{
+    <script type="text/javascript"
+            src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript">
+        function initialize() {
+            var latlng = new google.maps.LatLng(40.716948, -74.003563);
+            var options = {
+                zoom: 14,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+        }
+
+        $(function() {
+            initialize();
+        });
+
+    </script>
+}

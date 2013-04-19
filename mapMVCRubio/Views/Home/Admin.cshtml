@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "MiMapa";
+}
+
+
+<h2>MiMapa</h2>
+<h3>Longitud:</h3> <label id="lblLat">@ViewBag.Latitud</label>
+<h3>Latitud:</h3><label id="lblLong">@ViewBag.Longitud</label>
+<h3>Estado De la unidad:</h3><label id="lblestado">@ViewBag.Estado</label>
+
+<div id="map_canvas" style="width: 800px; height: 800px">
+</div>
+
+@Html.ActionLink("Registrar Nuevo Admin", "Register","Account")
+@section scripts
+{
+    <script type="text/javascript"
+            src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var long = $("#lblLat").text();
+            var lat = $("#lblLong").text();
+            var estdo = $("#lblestado").text();
+            var latlng = new google.maps.LatLng(lat, long);
+            var options = {
+                zoom: 14,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+        }
+
+        $(function () {
+            initialize();
+        });
+
+    </script>
+}
